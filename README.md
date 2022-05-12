@@ -17,29 +17,6 @@ This repository holds a web application for consulting Meraki license expiration
 
 ## Configuring the application
 
-### 1. Configure tool administrator login
-- Open `merakirenewal/webapp/users.json` in a text editor
-
-- Change/add/remove objects of email/username/password information as desired. This information will be loaded into the tool's database on startup.
-
-- When accessing the *Admin* information in the tool, these accounts will be valid.
-
-### 2. Configure corporate e-mail suffixes
-- Open `merakirenewal/webapp/email_whitelist.json` in a text editor
-
-- Change/add/remove strings for allowed e-mail prefixes as desired. This information will be loaded into the tool's database on startup.
-
-- When logging on to the tool, partner e-mailaddresses will be checked against this whitelist, i.e., e-mail addresses that do not end in a suffix listed in `merakirenewal/webapp/email_whitelist.json` will not be able to retrieve license information.
-
-### 3. Configure end-of-sale/end-of-support information
-- Open `merakirenewal/webapp/endofsale.json` in a text editor
-
-- Change/add/remove objects of SKU/end-of-sale/end-of-support information according to the most recent information. The repository's information is based on [this page as consulted on 17/09/2021](https://documentation.meraki.com/General_Administration/Other_Topics/Product_End-of-Life_(EOL)_Policies).
-
-- End-of-sale/end-of-support information will be displayed by the tool based on this file. 
-
-## Starting the application
-
 ### 1. Clone repository
 
 ```
@@ -47,17 +24,48 @@ $ git clone https://github.com/Radmanded/gve_devnet_meraki_license_renewal.git
 $ cd gve_devnet_meraki_license_renewal
 ```
 
-### 2. Build local Django application:
+### 2. Configure tool administrator login
+- Open `merakirenewal/webapp/users.json` in a text editor
 
-*NOTE: Assure lines 93-96 are **NOT** commented in `gve_devnet_meraki_license_renewal/merakirenewal/merakirenewal/settings.py`*
+- Change/add/remove objects of email/username/password information as desired. This information will be loaded into the tool's database on startup.
 
+- When accessing the *Admin* information in the tool, these accounts will be valid.
+
+### 3. Configure corporate e-mail suffixes
+- Open `merakirenewal/webapp/email_whitelist.json` in a text editor
+
+- Change/add/remove strings for allowed e-mail prefixes as desired. This information will be loaded into the tool's database on startup.
+
+- When logging on to the tool, partner e-mailaddresses will be checked against this whitelist, i.e., e-mail addresses that do not end in a suffix listed in `merakirenewal/webapp/email_whitelist.json` will not be able to retrieve license information.
+
+### 4. Configure end-of-sale/end-of-support information
+- Open `merakirenewal/webapp/endofsale.json` in a text editor
+
+- Change/add/remove objects of SKU/end-of-sale/end-of-support information according to the most recent information. The repository's information is based on [this page as consulted on 17/09/2021](https://documentation.meraki.com/General_Administration/Other_Topics/Product_End-of-Life_(EOL)_Policies).
+
+- End-of-sale/end-of-support information will be displayed by the tool based on this file. 
+
+## Starting the application
+ 
+### 1. Build local Django application:
+
+*NOTE: Must ensure lines 93-96 are **NOT** commented in `gve_devnet_meraki_license_renewal/merakirenewal/merakirenewal/settings.py`*
+
+# Screenshot
+
+- Lines 93-96
+![](IMAGES/Lines93-96.png) --> ![](IMAGES/Lines93-96-2.png)
+
+## Terminal
 ```
+$ python3 -m venv venv
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 $ cd merakirenewal
 $ python manage.py runserver
 ```
 
-### 3. In a browser, navigate to `localhost:8000`
+### 2. In a browser, navigate to `localhost:8000`
 
 # Screenshots
 
@@ -74,7 +82,7 @@ $ python manage.py runserver
 
 - Enter you name and country
 
-- Enter **j@cisco.com** in the E-mail Address* 
+- Enter **j@cisco.com** in the E-mail Address 
 
 - Enter API keys manually or import from CSV
 
@@ -82,7 +90,11 @@ $ python manage.py runserver
 
 ### Troubleshooting
 
+#Images not loading? 
+- Ensure Debug=True  in /merakirenewal/merakirenewal/settings.py
 
+# Screenshots
+![](IMAGES/djangoline.png)
 
 ### LICENSE
 
