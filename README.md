@@ -13,35 +13,25 @@ This repository holds a web application for consulting Meraki license expiration
 * Meraki REST API
 * Python
 * Django
-* PostgreSQL
-* Docker, Docker Compose
+* PostgreSQL 
 
 ## Configuring the application
 
-### 1. Configure GMail account for reporting
-- Optional: create a GMail account [here](https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp)
-
-- Enable your account to allow sending e-mails from code by turning [this](https://myaccount.google.com/lesssecureapps) setting on
-
-- Fill out `merakirenewal/webapp/.env`:
-    - SENDER_EMAIL: Your GMail address
-    - SENDER_PW: Your GMail password
-
-### 2. Configure tool administrator login
+### 1. Configure tool administrator login
 - Open `merakirenewal/webapp/users.json` in a text editor
 
 - Change/add/remove objects of email/username/password information as desired. This information will be loaded into the tool's database on startup.
 
 - When accessing the *Admin* information in the tool, these accounts will be valid.
 
-### 3. Configure corporate e-mail suffixes
+### 2. Configure corporate e-mail suffixes
 - Open `merakirenewal/webapp/email_whitelist.json` in a text editor
 
 - Change/add/remove strings for allowed e-mail prefixes as desired. This information will be loaded into the tool's database on startup.
 
 - When logging on to the tool, partner e-mailaddresses will be checked against this whitelist, i.e., e-mail addresses that do not end in a suffix listed in `merakirenewal/webapp/email_whitelist.json` will not be able to retrieve license information.
 
-### 4. Configure end-of-sale/end-of-support information
+### 3. Configure end-of-sale/end-of-support information
 - Open `merakirenewal/webapp/endofsale.json` in a text editor
 
 - Change/add/remove objects of SKU/end-of-sale/end-of-support information according to the most recent information. The repository's information is based on [this page as consulted on 17/09/2021](https://documentation.meraki.com/General_Administration/Other_Topics/Product_End-of-Life_(EOL)_Policies).
@@ -50,43 +40,16 @@ This repository holds a web application for consulting Meraki license expiration
 
 ## Starting the application
 
-### 1. Install Docker Desktop [here](https://www.docker.com/products/docker-desktop)
-
-### 2. Install Docker Compose
+### 1. Clone repository
 
 ```
-$ pip install docker-compose
+$ git clone https://github.com/Radmanded/gve_devnet_meraki_license_renewal.git
+$ cd gve_devnet_meraki_license_renewal
 ```
 
-### 3. Clone repository
+### 2. Build local Django application:
 
-```
-$ git clone https://wwwin-github.cisco.com/stienvan/GVE_DevNet_Meraki_License_Renewal.git
-$ cd GVE_DevNet_Meraki_License_Renewal
-```
-
-### 5. Build application
-
-**From DockerHub image:**
-
-```
-$ docker-compose down # only necessary if you started the image earlier
-$ docker-compose up -d
-```
-
-**OR from a local Docker image:**
-
-*NOTE: Assure lines 93-96 are commented in `merakirenewal/merakirenewal/settings.py`*
-
-```
-$ docker-compose -f docker-compose-local.yml down # only necessary if you started the image earlier
-$ docker-compose -f docker-compose-local.yml build
-$ docker-compose -f docker-compose-local.yml up -d
-```
-
-**OR as a local Django application:**
-
-*NOTE: Assure lines 93-96 are **NOT** commented in `merakirenewal/merakirenewal/settings.py`*
+*NOTE: Assure lines 93-96 are **NOT** commented in `gve_devnet_meraki_license_renewal/merakirenewal/merakirenewal/settings.py`*
 
 ```
 $ pip install -r requirements.txt
@@ -94,7 +57,7 @@ $ cd merakirenewal
 $ python manage.py runserver
 ```
 
-### 6. In a browser, navigate to `localhost:8000`
+### 3. In a browser, navigate to `localhost:8000`
 
 # Screenshots
 
@@ -106,6 +69,20 @@ $ python manage.py runserver
 
 - For tool administrators: log overview
 ![](IMAGES/logs.png)
+
+### Using the License Renewal Tool
+
+- Enter you name and country
+
+- Enter **j@cisco.com** in the E-mail Address* 
+
+- Enter API keys manually or import from CSV
+
+- Enter the number of days 
+
+### Troubleshooting
+
+
 
 ### LICENSE
 
