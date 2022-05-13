@@ -90,7 +90,7 @@ $ python manage.py runserver
 
 ### Troubleshooting
 
-#**Images not loading? **
+**Images not loading?**
 - Ensure Debug=True  in /merakirenewal/merakirenewal/settings.py
 
 # Screenshots
