@@ -53,8 +53,8 @@ $ cd gve_devnet_meraki_license_renewal
 
 # Screenshot
 
-- Lines 93-96
-![](IMAGES/Lines93-96.png) --> ![](IMAGES/Lines93-96-2.png)
+- **Changes to Lines 93-96**
+![](IMAGES/Lines93-96.png) **Deleted #** ![](IMAGES/Lines93-96-2.png)
 
 ## Terminal
 ```
@@ -90,7 +90,7 @@ $ python manage.py runserver
 
 ### Troubleshooting
 
-#Images not loading? 
+#**Images not loading? **
 - Ensure Debug=True  in /merakirenewal/merakirenewal/settings.py
 
 # Screenshots
