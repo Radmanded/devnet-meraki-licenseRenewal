@@ -24,27 +24,6 @@ $ git clone https://github.com/Radmanded/gve_devnet_meraki_license_renewal.git
 $ cd gve_devnet_meraki_license_renewal
 ```
 
-### 2. Configure tool administrator login
-- Open `merakirenewal/webapp/users.json` in a text editor
-
-- Change/add/remove objects of email/username/password information as desired. This information will be loaded into the tool's database on startup.
-
-- When accessing the *Admin* information in the tool, these accounts will be valid.
-
-### 3. Configure corporate e-mail suffixes
-- Open `merakirenewal/webapp/email_whitelist.json` in a text editor
-
-- Change/add/remove strings for allowed e-mail prefixes as desired. This information will be loaded into the tool's database on startup.
-
-- When logging on to the tool, partner e-mailaddresses will be checked against this whitelist, i.e., e-mail addresses that do not end in a suffix listed in `merakirenewal/webapp/email_whitelist.json` will not be able to retrieve license information.
-
-### 4. Configure end-of-sale/end-of-support information
-- Open `merakirenewal/webapp/endofsale.json` in a text editor
-
-- Change/add/remove objects of SKU/end-of-sale/end-of-support information according to the most recent information. The repository's information is based on [this page as consulted on 17/09/2021](https://documentation.meraki.com/General_Administration/Other_Topics/Product_End-of-Life_(EOL)_Policies).
-
-- End-of-sale/end-of-support information will be displayed by the tool based on this file. 
-
 ## Starting the application
  
 ### 1. Build local Django application:
